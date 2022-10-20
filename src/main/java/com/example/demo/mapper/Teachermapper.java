@@ -8,10 +8,8 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 @Mapper
 public interface Teachermapper extends BaseMapper<Teacher> {
-    @Select("select name from teacher where id= #{id}")
-    Teacher selectById(int id);
 
-    @Insert("insert into teacher (id,name,password,subject) values (#{id},#{name},#{password},#{subject})")
+    @Insert("insert into teacher (id,name,password,realname,subject) values (#{id},#{name},#{password},#{realname},#{subject})")
     void register(Teacher teacher);
 
     @Select("select * from teacher where name =#{name}")

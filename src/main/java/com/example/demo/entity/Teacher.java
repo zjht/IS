@@ -7,6 +7,7 @@ public class Teacher {
     private int id;
     private String name;
     private int password;
+    private String realname;
     private String subject;
 
     public int getId() {
@@ -33,6 +34,14 @@ public class Teacher {
         this.password = password;
     }
 
+    public String getRealname() {
+        return realname;
+    }
+
+    public void setRealname(String realname) {
+        this.realname = realname;
+    }
+
     public String getSubject() {
         return subject;
     }
@@ -47,6 +56,7 @@ public class Teacher {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", password=" + password +
+                ", realname='" + realname + '\'' +
                 ", subject='" + subject + '\'' +
                 '}';
     }

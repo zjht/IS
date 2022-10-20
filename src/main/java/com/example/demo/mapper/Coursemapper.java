@@ -35,4 +35,7 @@ public interface Coursemapper extends BaseMapper<Course> {
             one = @One(select = "com.example.demo.mapper.Teachermapper.selectById")),
     })
     List<Course> selectAllCourseAndTeacher();
+
+    @Delete("delete from course where tid = #{id}")
+    void deletebytid(int id);
 }

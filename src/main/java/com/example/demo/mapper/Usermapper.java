@@ -11,7 +11,7 @@ import static com.baomidou.mybatisplus.core.assist.ISqlRunner.UPDATE;
 @Mapper
 public interface Usermapper extends BaseMapper<User> {
 
-    @Insert("insert into student (id,age,password,name,gender) values (#{id},#{age},#{password},#{name},#{gender})")
+    @Insert("insert into student (id,age,name,password,realname,gender) values (#{id},#{age},#{name},#{password},#{realname},#{gender})")
     void register(User user);
 
     @Select("select * from student where name =#{name}")

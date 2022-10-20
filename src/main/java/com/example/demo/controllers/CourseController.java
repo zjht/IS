@@ -1,11 +1,10 @@
 package com.example.demo.controllers;
 
 import com.example.demo.entity.Course;
-import com.example.demo.entity.Teacher;
 import com.example.demo.mapper.Coursemapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.yaml.snakeyaml.events.Event;
+
 
 import java.util.ArrayList;
 import java.util.HashMap;

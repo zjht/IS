@@ -1,6 +1,6 @@
 package com.example.demo.controllers;
 
-import com.example.demo.entity.Course;
+
 import com.example.demo.entity.User;
 import com.example.demo.mapper.Usermapper;
 import com.example.demo.service.Userservice;

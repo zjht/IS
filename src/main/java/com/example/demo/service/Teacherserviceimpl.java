@@ -1,8 +1,10 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.Teacher;
+import com.example.demo.entity.User;
 import com.example.demo.mapper.Teachermapper;
 import com.example.demo.mapper.Teachermapper;
+import com.example.demo.mapper.Usermapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
@@ -13,11 +15,14 @@ import javax.transaction.Transactional;
 public class Teacherserviceimpl implements Teacherservice {
         @Autowired
         private Teachermapper teachermapper;
+        @Autowired
+        private Usermapper usermapper;
 
         @Override
         public void register(Teacher teacher) {
             Teacher teacherdb = teachermapper.findbyname(teacher.getName());
-            if(teacherdb==null){
+            User userdb = usermapper.findbyname(teacher.getName());
+            if(teacherdb==null&&userdb==null){
                 if(ObjectUtils.isEmpty(teachermapper.getMaxid())){
                     teacher.setId(1);
                 }else {

@@ -9,8 +9,9 @@ public class User {
 
     private int id;
     private int age;
-    private int password;
     private String name;
+    private int password;
+    private String realname;
     private String gender;
 
     public int getId() {
@@ -29,6 +30,14 @@ public class User {
         this.age = age;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public int getPassword() {
         return password;
     }
@@ -37,12 +46,12 @@ public class User {
         this.password = password;
     }
 
-    public String getName() {
-        return name;
+    public String getRealname() {
+        return realname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setRealname(String realname) {
+        this.realname = realname;
     }
 
     public String getGender() {
@@ -58,8 +67,9 @@ public class User {
         return "User{" +
                 "id=" + id +
                 ", age=" + age +
-                ", password=" + password +
                 ", name='" + name + '\'' +
+                ", password=" + password +
+                ", realname='" + realname + '\'' +
                 ", gender='" + gender + '\'' +
                 '}';
     }

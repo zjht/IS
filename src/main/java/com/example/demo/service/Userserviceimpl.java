@@ -1,6 +1,8 @@
 package com.example.demo.service;
 
+import com.example.demo.entity.Teacher;
 import com.example.demo.entity.User;
+import com.example.demo.mapper.Teachermapper;
 import com.example.demo.mapper.Usermapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,11 +15,14 @@ import javax.transaction.Transactional;
 public class Userserviceimpl implements Userservice{
     @Autowired
     private Usermapper usermapper;
+    @Autowired
+    private Teachermapper teachermapper;
 
     @Override
     public void register(User user) {
         User userdb = usermapper.findbyname(user.getName());
-        if(userdb==null){
+        Teacher teacherdb = teachermapper.findbyname(user.getName());
+        if(userdb==null&&teacherdb==null){
             if(ObjectUtils.isEmpty(usermapper.getMaxid())){
                 user.setId(1);
             }else {
