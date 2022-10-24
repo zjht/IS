@@ -21,15 +21,22 @@ public class CourseController {
     @GetMapping("/course")
     public List query(){
         List<Course> list = coursemapper.selectAllCourseAndTeacher();
-        System.out.println(list);
+        System.out.println("queryallcourse"+list);
         return list;
     }
 
-    @GetMapping("/course/id")
+    @GetMapping("/course/querybyid")
     public List<Course> queryById(int id){
         List list = new ArrayList<>();
         list.add(coursemapper.selectbyid(id));
         System.out.println("queryById   "+list);
+        return list;
+    }
+
+    @GetMapping("/course/querybyname")
+    public List<Course> querybyname(String name){
+        List<Course> list = coursemapper.selectbyname(name);
+        System.out.println("querybyname   "+list);
         return list;
     }
 
@@ -48,7 +55,7 @@ public class CourseController {
             return "插入失败,id重复";
         }
     }
-    @DeleteMapping("/course/delete")
+    @DeleteMapping("/course")
     public Map<String,Object> delete(int id, int tid) {
         Map<String,Object> map = new HashMap<>();
         Course course = coursemapper.selectbyid(id);
@@ -79,7 +86,7 @@ public class CourseController {
         }
     }
 
-    @PutMapping("/course/update")
+    @PutMapping("/course")
     public Course update(Course course){
         coursemapper.updateById(course);
         System.out.println(course);

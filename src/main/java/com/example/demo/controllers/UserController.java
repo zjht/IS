@@ -22,7 +22,7 @@ public class UserController {
     @Autowired
     private Userservice userservice;
 
-    @GetMapping("/")
+    @GetMapping("")
     public List  query(){
         List<User> list = usermapper.selectList(null);
         System.out.println(list);
@@ -40,7 +40,6 @@ public class UserController {
             User userdb = userservice.login(user);
             map.put("status","success");
             map.put("msg","登录成功");
-            userdb.setPassword(000000);
             map.put("user", userdb);
         }catch (Exception e){
             e.printStackTrace();
@@ -73,14 +72,15 @@ public class UserController {
     }
 
 
-    @PutMapping("/update")
+    @PutMapping("")
     public String update(User user){
+
         userservice.update(user);
         System.out.println("修改密码后的用户"+user);
         return "更新成功";
     }
 
-    @DeleteMapping("/delete")
+    @DeleteMapping("")
     public String delete(int id) {
         usermapper.deleteById(id);
     return "删除";

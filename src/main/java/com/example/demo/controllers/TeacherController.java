@@ -21,7 +21,7 @@ public class TeacherController {
     @Autowired
     private Teacherservice teacherservice;
 
-    @GetMapping("/")
+    @GetMapping("")
     public List query(){
         List<Teacher> list = teachermapper.selectList(null);
         System.out.println(list);
@@ -39,7 +39,6 @@ public class TeacherController {
             Teacher teacherdb = teacherservice.login(teacher);
             map.put("status","success");
             map.put("msg","登录成功");
-            teacherdb.setPassword(000000);
             map.put("user", teacherdb);
         }catch (Exception e){
             e.printStackTrace();
@@ -72,14 +71,14 @@ public class TeacherController {
     }
 
 
-    @PutMapping("/update")
+    @PutMapping("")
     public String update(Teacher teacher){
         teacherservice.update(teacher);
         System.out.println("修改密码后的老师"+teacher);
         return "更新成功";
     }
 
-    @DeleteMapping("/delete")
+    @DeleteMapping("")
     public String delete(int id) {
         teachermapper.deleteById(id);
         return "删除";

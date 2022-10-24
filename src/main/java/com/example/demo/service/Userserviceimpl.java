@@ -6,6 +6,7 @@ import com.example.demo.mapper.Teachermapper;
 import com.example.demo.mapper.Usermapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.DigestUtils;
 import org.springframework.util.ObjectUtils;
 
 import javax.transaction.Transactional;
@@ -28,6 +29,7 @@ public class Userserviceimpl implements Userservice{
             }else {
                 user.setId((int) usermapper.getMaxid() + 1);
             }
+            user.setPassword(DigestUtils.md5DigestAsHex(user.getPassword().getBytes()));
             System.out.println(user);
             usermapper.register(user);
         }else {
@@ -39,7 +41,7 @@ public class Userserviceimpl implements Userservice{
     public User login(User user) {
         User userdb = usermapper.findbyname(user.getName());
         if (!ObjectUtils.isEmpty(userdb)){
-            if (userdb.getPassword() == user.getPassword()){
+            if (userdb.getPassword().equals(DigestUtils.md5DigestAsHex(user.getPassword().getBytes()))){
                 return userdb;
             }else {
                 throw new RuntimeException("密码错误");
@@ -50,6 +52,7 @@ public class Userserviceimpl implements Userservice{
     }
 
     public void update(User user) {
-            usermapper.updatebyname(user);
+        user.setPassword(DigestUtils.md5DigestAsHex(user.getPassword().getBytes()));
+        usermapper.updatebyname(user);
     }
 }

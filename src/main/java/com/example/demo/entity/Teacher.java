@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 public class Teacher {
     private int id;
     private String name;
-    private int password;
+    private String  password;
     private String realname;
     private String subject;
 
@@ -26,11 +26,11 @@ public class Teacher {
         this.name = name;
     }
 
-    public int getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(int password) {
+    public void setPassword(String  password) {
         this.password = password;
     }
 

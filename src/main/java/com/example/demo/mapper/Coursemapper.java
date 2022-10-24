@@ -23,6 +23,19 @@ public interface Coursemapper extends BaseMapper<Course> {
     })
     Course selectbyid(int id);
 
+    @Select("select * from course where name like '%'||#{name}||'%' order by id asc")
+    @Results({
+            @Result(column = "id",property = "id"),
+            @Result(column = "name",property = "name"),
+            @Result(column = "studyhour",property = "studyhour"),
+            @Result(column = "Syllabus",property = "Syllabus"),
+            @Result(column = "document",property = "document"),
+            @Result(column = "tid",property = "tid"),
+            @Result(column = "tid",property = "teacher",javaType = Teacher.class,
+                    one = @One(select = "com.example.demo.mapper.Teachermapper.selectById")),
+    })
+    List<Course> selectbyname(String name);
+
     @Select("select * from course order by id asc")
     @Results({
             @Result(column = "id",property = "id"),

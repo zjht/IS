@@ -1,7 +1,5 @@
 package com.example.demo.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 @TableName("student")
@@ -10,7 +8,7 @@ public class User {
     private int id;
     private int age;
     private String name;
-    private int password;
+    private String  password;
     private String realname;
     private String gender;
 
@@ -38,11 +36,11 @@ public class User {
         this.name = name;
     }
 
-    public int getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(int password) {
+    public void setPassword(String  password) {
         this.password = password;
     }
 
